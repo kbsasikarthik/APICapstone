@@ -39,7 +39,7 @@ public class Venue {
 	}
 	@Override
 	public String toString() {
-		return "Venue [name=" + name + ", city=" + city + ", state=" + state + ", address=" + address + "]";
+		return name + "," + city + ","+ state ;
 	}
 	
 	

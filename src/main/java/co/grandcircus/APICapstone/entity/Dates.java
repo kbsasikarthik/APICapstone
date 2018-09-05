@@ -14,7 +14,7 @@ public class Dates {
 
 	@Override
 	public String toString() {
-		return "Dates [start=" + start + "]";
+		return start + "";
 	}
 	
 	

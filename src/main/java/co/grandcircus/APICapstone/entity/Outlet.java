@@ -14,7 +14,10 @@ public class Outlet {
 
 	@Override
 	public String toString() {
-		return "Outlet [url=" + url + "]";
+		if(url.contains("ticketmaster"))
+			return  "\""+url+"\"";
+		else
+			return "";
 	}
 	
 	

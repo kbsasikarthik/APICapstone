@@ -20,7 +20,7 @@ public class Start {
 	}
 	@Override
 	public String toString() {
-		return "Start [localDate=" + localDate + ", localTime=" + localTime + "]";
+		return localDate + " - "+ localTime ;
 	}
 	
 	

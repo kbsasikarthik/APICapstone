@@ -14,7 +14,10 @@ public class Classification {
 
 	@Override
 	public String toString() {
-		return "Classification [family=" + family + "]";
+		if(family == false)
+			return  "No";
+		else
+			return "Yes";
 	}
 	
 	
