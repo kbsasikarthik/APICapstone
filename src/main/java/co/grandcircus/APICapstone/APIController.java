@@ -2,6 +2,8 @@ package co.grandcircus.APICapstone;
 
 //import java.awt.Event;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -13,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.APICapstone.entity.Event;
 import co.grandcircus.APICapstone.entity.ResultSet;
-import co.grandcircus.APICapstone.entity.Venue;
 
 @Controller
 public class APIController {
@@ -36,9 +37,21 @@ public class APIController {
 		
 //		Event[] events = result.getEmbedded().getEvents();		
 		List<Event> events = result.getEmbedded().getEvents();		
-
 		mav.addObject("events", events);
-				
+		
+		Set<String> cities=new TreeSet<String>();
+		
+		for(int i=0; i<events.size(); i++) {
+			
+			cities.add(events.get(i).getEmbedded().getVenues().get(0).getCity().getName());
+			
+		}
+		
+		
+//		System.out.println(events.stream().map(event -> event.getEmbedded().getVenues().get(0).getCity().getName()).collect(Collectors.toList()));
+		
+		System.out.println(cities);
+		mav.addObject("cities", cities);
 		return mav;
 	}
 	
@@ -56,9 +69,13 @@ public class APIController {
 				ResultSet.class);
 		
 		ResultSet result = response.getBody();
-		System.out.println(result);
 		
-		mav.addObject("results", result.getEmbedded().getEvents());
+		List<Event> events = result.getEmbedded().getEvents();		
+
+		mav.addObject("events", events);
+//		System.out.println(result);
+		
+//		mav.addObject("results", result.getEmbedded().getEvents());
 		
 		return mav;
 	}

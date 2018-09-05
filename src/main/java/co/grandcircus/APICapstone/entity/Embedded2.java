@@ -5,7 +5,7 @@ import java.util.List;
 //@Entity
 public class Embedded2 {
 	
-	private List<Venue> venues;
+	public List<Venue> venues;
 
 	public List<Venue> getVenues() {
 		return venues;

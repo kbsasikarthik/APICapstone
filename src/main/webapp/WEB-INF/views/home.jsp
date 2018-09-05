@@ -16,30 +16,7 @@
 </head>
 <body>
 <a href="/search-result">Search API</a>
-<!--${events }-->
 
-<table>
-<thead>
-<tr><td>Name</td><td>Venue</td><td>Family Friendly</td><td>Start Date & Time</td><td>Link</td><td>Add to Bucket List</td></tr>
-</thead>
-<c:forEach var="item" items="${events }">
-	<tr>
-	<td><a href=${item.name}>${item.name }</a></td>
-	<td>${item.embedded.venues[0].name}</td>
-	<td>${item.classifications[0] }</td>
-	<td>${item.dates}</td>
-	<td><a href=${item.outlets[0]}>Ticket Master</a></td>
-	<td>  <div class="input-group" required>
-   
-          	<input name = "blist" type="radio" value="true" aria-label="Yes button"> Yes
-	     	<input name = "blist" type="radio" value="false" aria-label="No button"> No
-	 	 </div></td>
-	
-	
-	
-	</tr>
-</c:forEach>
-</table>
 
 		<form class="form-inline" action="/search-result" autocomplete="off">
 		  <label class="sr-only" for="keyword">Name</label>
@@ -47,11 +24,12 @@
 		  
 		  <label class="sr-only" for="city">City</label>
 		  <select class="form-control mb-2 mr-sm-2" id="city" name="city">
-		  	<option value="">City</option>
-		  	<c:forEach items="${ cities }" var="cit">
+		  <option value="">City</option>
+		  
+	 		<c:forEach items="${ cities }" var="cit">
 		  		<option <c:if test="${ cit eq param.city }">selected</c:if>>${ cit }</option>
 		  	</c:forEach>
-		  </select>
+		  </select> 
 	
 		  <div class="input-group" required>Family Friendly?
    

@@ -15,7 +15,7 @@ public class Event {
 	private List<Classification> classifications;
 	private List<Outlet> outlets;
 	@JsonProperty("_embedded")
-	private Embedded2 embedded;
+	public Embedded2 embedded;
 	
 	
 	public String getName() {
