@@ -20,7 +20,7 @@
 
 		<form class="form-inline" action="/search-result" autocomplete="off">
 		  <label class="sr-only" for="keyword">Name</label>
-		  <input type="text" value="${param.name}" class="form-control mb-2 mr-sm-2" id="name" name="name" placeholder="Keyword">
+		  <input type="text" value="${param.keyword}" class="form-control mb-2 mr-sm-2" id="keywoed" name="keyword" placeholder="Keyword">
 		  
 		  <label class="sr-only" for="city">City</label>
 		  <select class="form-control mb-2 mr-sm-2" id="city" name="city">
@@ -31,7 +31,7 @@
 		  	</c:forEach>
 		  </select> 
 	
-		  <div class="input-group" required>Family Friendly?
+		  <div class="input-group" >Family Friendly?
    
           	<input name = "family" type="radio" value="true" aria-label="Yes button"> Yes
 	     	<input name = "family" type="radio" value="false" aria-label="No button"> No

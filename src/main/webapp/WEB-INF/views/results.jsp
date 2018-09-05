@@ -13,14 +13,14 @@
 <thead>
 <tr><td>Name</td><td>Venue</td><td>Family Friendly</td><td>Start Date & Time</td><td>Link</td><td>Add to Bucket List</td></tr>
 </thead>
-<c:forEach var="item" items="${events }">
+<c:forEach var="item" items="${filteredEvents }">
 	<tr>
 	<td><a href=${item.name}>${item.name}</a></td>
 	<td>${item.embedded.venues[0].city}</td>
 	<td>${item.classifications[0] }</td>
 	<td>${item.dates}</td>
 	<td><a href=${item.outlets[0]}>Ticket Master</a></td>
-	<td>  <div class="input-group" required>
+	<td>  <div class="input-group" >
    
           	<input name = "blist" type="radio" value="true" aria-label="Yes button"> Yes
 	     	<input name = "blist" type="radio" value="false" aria-label="No button"> No
