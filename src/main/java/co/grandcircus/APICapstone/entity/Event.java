@@ -9,6 +9,7 @@ public class Event {
 //	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private Long id;
 //	@Column(name="event_name")
+	private String id;
 	private String name;
 	
 	private Dates dates;
@@ -18,6 +19,12 @@ public class Event {
 	public Embedded2 embedded;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -50,7 +57,7 @@ public class Event {
 	}
 	@Override
 	public String toString() {
-		return "Event [name=" + name + ", dates=" + dates + ", classifications=" + classifications + ", outlets="
+		return "Event [id=" + id + ", name=" + name + ", dates=" + dates + ", classifications=" + classifications + ", outlets="
 				+ outlets + ", embedded=" + embedded + "]";
 	}
 	

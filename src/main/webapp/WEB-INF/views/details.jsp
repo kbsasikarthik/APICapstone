@@ -15,32 +15,13 @@
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<h1>${title }</h1>
-<h3>Number of matches - ${i }</h3>
-<table>
-<thead>
-<tr>
-<strong><td>Name</td><td>Venue</td><td>Family Friendly</td><td>Start Date & Time</td><td>Link</td><td>Add to Bucket List</td>
-</strong>
-</tr>
-</thead>
-
-<c:forEach var="item" items="${filteredEvents }">
-	<tr>
-	<td><a href="/details/${item.id }">${item.name}</a></td>
-	<td >${item.embedded.venues[0].city}</td>
-	<td style="text-align:center">${item.classifications[0] }</td>
-	<td>${item.dates}</td>
-	<td><a href=${item.outlets[0]}>Ticket Master</a></td>
-	<td><div class="input-group" >
-   
-          	<input name = "blist" type="radio" value="true" aria-label="Yes button"> Yes
-	     	<input name = "blist" type="radio" value="false" aria-label="No button"> No
-	 	 </div></td>	
-	</tr>
-</c:forEach>
-
-</table>
-<a href="/" class="btn btn-primary">Back</a>
+	<p>Name of the Event: ${details.name}</p>
+	<p>Address : ${details.embedded.venues[0].address}</p>
+	<p>City : ${details.embedded.venues[0].city}</p>
+	<p>State : ${details.embedded.venues[0].state}</p>
+	
+	<p>Family Friendly? : ${details.classifications[0] }</p>
+	<p>Start Date and Time:${details.dates}</p>
+	<a href="/" class="btn btn-primary">Home</a>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [line1=" + line1 + "]";
+		return line1 + "";
 	}
 	
 	

@@ -10,6 +10,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
@@ -53,6 +55,7 @@ public class APIController {
 		
 //		System.out.println(cities);
 		mav.addObject("cities", cities);
+		mav.addObject("title", "Search Events!");
 		return mav;
 	}
 	
@@ -77,33 +80,48 @@ public class APIController {
 		for(int i=0; i<events.size(); i++) {
 			
 			String selcity = events.get(i).getEmbedded().getVenues().get(0).getCity().getName();
-//			System.out.println(selcity);
 			String key = events.get(i).getName().toLowerCase();
-//			System.out.println(key);
 			Boolean fam = events.get(i).getClassifications().get(0).getFamily();
-//			System.out.println(fam);
-			System.out.println(events.get(i));
+//			System.out.println(events.get(i));
 			if(city.equals(selcity) && key.contains(keyword.toLowerCase()) && fam == family ){
 				
-				filteredEvents.add(events.get(i));	
+				filteredEvents.add(events.get(i));
 				
-//				System.out.println(filteredEvents);
 			}
-//			else
-//			{
-//				return new ModelAndView("redirect:/");
-//			}
-			
-		}
 		
+		}
+		mav.addObject("title", "Results!");
 
 		mav.addObject("filteredEvents", filteredEvents);
-		System.out.println(filteredEvents);
-		
-//		mav.addObject("results", result.getEmbedded().getEvents());
-		
+		mav.addObject("i", filteredEvents.size());
 		return mav;
 	}
 	
 
+	
+	@RequestMapping("/details/{id}")
+	
+	public ModelAndView details(@PathVariable("id") String id) {
+	System.out.println(id);
+		ModelAndView mav = new ModelAndView("details");
+		
+		RestTemplate restTemplate = new RestTemplate();
+		String url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=RfNWelAIY8ugN50volCWT39YPDEuttKW";
+		ResponseEntity<ResultSet> response = restTemplate.exchange(url,
+				HttpMethod.GET, new HttpEntity<>(null),
+				ResultSet.class);
+		
+		ResultSet result = response.getBody();
+		
+		List<Event> events = result.getEmbedded().getEvents();
+		Event filteredEvent = new Event();
+		for(int i=0; i<events.size(); i++) {			
+			if(events.get(i).getId().equals(id)) {
+				filteredEvent = events.get(i);
+			}
+		}	
+		mav.addObject("details", filteredEvent);
+		System.out.println(filteredEvent);		
+		return mav;
+	}
 }
