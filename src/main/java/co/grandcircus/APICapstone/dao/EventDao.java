@@ -33,4 +33,8 @@ public class EventDao {
 		em.remove(event);
 	}
 
+	public void update(BucketList bl) {
+		em.merge(bl);
+	}
+
 }

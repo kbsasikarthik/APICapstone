@@ -1,16 +1,14 @@
 package co.grandcircus.APICapstone.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class BucketList {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String id;
 	private String name;
 
 	public BucketList() {
@@ -19,11 +17,18 @@ public class BucketList {
 
 	}
 
-	public Long getId() {
+	public BucketList(String id, String name) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

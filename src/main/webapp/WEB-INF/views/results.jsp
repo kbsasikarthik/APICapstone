@@ -34,8 +34,9 @@
 	<td><a href=${item.outlets[0]}>Ticket Master</a></td>
 	<td><div class="input-group" >
    
-          	<input name = "blist" type="radio" value="true" aria-label="Yes button"> Yes
-	     	<input name = "blist" type="radio" value="false" aria-label="No button"> No
+          	<!-- <input name = "blist" type="radio" value="true" aria-label="Yes button"> Yes
+	     	<input name = "blist" type="radio" value="false" aria-label="No button"> No -->
+	     	<a  class="btn btn-primary" href="/events/${item.id }/${item.name }/update" >Add to Favorites</a>
 	 	 </div></td>	
 	</tr>
 </c:forEach>
